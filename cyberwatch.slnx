@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="CyberWatch.Tests/CyberWatch.Tests.csproj" />
+  <Project Path="CyberWatch_web/CyberWatch_web.csproj" />
+</Solution>
