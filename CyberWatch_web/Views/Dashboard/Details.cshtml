@@ -1,0 +1,52 @@
+﻿@model CyberWatch_web.Models.SecurityAlert
+
+@{
+    ViewData["Title"] = "Alert Details";
+}
+
+<div class="container mt-4">
+    <div class="mb-4">
+        <h1>Security Alert Details</h1>
+        <p class="text-muted">
+            Review the detected incident information.
+        </p>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <strong>@Model.AlertType</strong>
+        </div>
+
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Username</dt>
+                <dd class="col-sm-9">@Model.Username</dd>
+
+                <dt class="col-sm-3">IP Address</dt>
+                <dd class="col-sm-9">@Model.IpAddress</dd>
+
+                <dt class="col-sm-3">Severity</dt>
+                <dd class="col-sm-9">@Model.Severity</dd>
+
+                <dt class="col-sm-3">Status</dt>
+                <dd class="col-sm-9">@Model.Status</dd>
+
+                <dt class="col-sm-3">Description</dt>
+                <dd class="col-sm-9">@Model.Description</dd>
+
+                <dt class="col-sm-3">Created</dt>
+                <dd class="col-sm-9">
+                    @Model.CreatedAtUtc
+                    .ToLocalTime()
+                    .ToString("dd MMM yyyy HH:mm")
+                </dd>
+            </dl>
+
+            <a asp-controller="Dashboard"
+               asp-action="Index"
+               class="btn btn-secondary">
+                Back to Dashboard
+            </a>
+        </div>
+    </div>
+</div>

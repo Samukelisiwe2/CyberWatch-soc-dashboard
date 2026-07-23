@@ -36,4 +36,17 @@ public class DashboardController : Controller
 
         return View(viewModel);
     }
+
+    public async Task<IActionResult> Details(int id)
+    {
+        var alert = await _context.SecurityAlerts
+            .FirstOrDefaultAsync(a => a.Id == id);
+
+        if (alert is null)
+        {
+            return NotFound();
+        }
+
+        return View(alert);
+    }
 }
