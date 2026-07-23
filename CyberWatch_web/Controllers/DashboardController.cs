@@ -1,4 +1,5 @@
 ﻿using CyberWatch_web.Data;
+using CyberWatch_web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,10 +16,24 @@ public class DashboardController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var alerts = await _context.SecurityAlerts
-            .OrderByDescending(a => a.CreatedAtUtc)
-            .ToListAsync();
+        var viewModel = new DashboardViewModel
+        {
+            TotalAlerts = await _context.SecurityAlerts.CountAsync(),
 
-        return View(alerts);
+            OpenAlerts = await _context.SecurityAlerts
+                .CountAsync(alert => alert.Status == AlertStatus.Open),
+
+            HighSeverityAlerts = await _context.SecurityAlerts
+                .CountAsync(alert => alert.Severity == AlertSeverity.High),
+
+            TotalSecurityLogs = await _context.SecurityLogs.CountAsync(),
+
+            RecentAlerts = await _context.SecurityAlerts
+                .OrderByDescending(alert => alert.CreatedAtUtc)
+                .Take(10)
+                .ToListAsync()
+        };
+
+        return View(viewModel);
     }
 }
