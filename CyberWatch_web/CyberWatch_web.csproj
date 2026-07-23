@@ -22,8 +22,4 @@
     <PackageReference Include="SQLitePCLRaw.provider.e_sqlite3.netstandard11" Version="1.1.14" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Dashbord\" />
-  </ItemGroup>
-
 </Project>

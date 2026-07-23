@@ -1,0 +1,36 @@
+﻿@model IEnumerable<CyberWatch_web.Models.SecurityAlert>
+
+@{
+    ViewData["Title"] = "CyberWatch Dashboard";
+}
+
+<h1>🛡 CyberWatch SOC Dashboard</h1>
+
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Type</th>
+            <th>User</th>
+            <th>IP</th>
+            <th>Severity</th>
+            <th>Status</th>
+            <th>Created</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var alert in Model)
+        {
+            <tr>
+                <td>@alert.AlertType</td>
+                <td>@alert.Username</td>
+                <td>@alert.IpAddress</td>
+                <td>@alert.Severity</td>
+                <td>@alert.Status</td>
+                <td>@alert.CreatedAtUtc</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
