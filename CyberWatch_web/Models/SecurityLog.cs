@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CyberWatch.Web.Models;
+namespace CyberWatch_web.Models;
 
 public enum SecurityEventType
 {

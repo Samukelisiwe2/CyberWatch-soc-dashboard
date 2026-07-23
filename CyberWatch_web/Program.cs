@@ -1,4 +1,5 @@
-using CyberWatch.Web.Data;
+using CyberWatch_web.Data;
+using CyberWatch_web.Services;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ var connectionString =
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(connectionString));
+builder.Services.AddScoped<ThreatDetectionService>();
 
 var app = builder.Build();
 
