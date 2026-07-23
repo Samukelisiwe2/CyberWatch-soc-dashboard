@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Simulate Login";
+}
+
+<div class="container mt-4">
+    <h1>Security Login Simulator</h1>
+
+    <p class="text-muted">
+        Record successful or failed login attempts to test CyberWatch.
+    </p>
+
+    @if (ViewBag.Message is not null)
+    {
+        <div class="alert alert-info">
+            @ViewBag.Message
+        </div>
+    }
+
+    @if (ViewBag.AlertCreated == true)
+    {
+        <div class="alert alert-danger">
+            <strong>Threat detected:</strong>
+            A brute-force security alert was created.
+        </div>
+    }
+
+    <form asp-controller="Security"
+          asp-action="Simulate"
+          method="post">
+
+        @Html.AntiForgeryToken()
+
+        <div class="mb-3">
+            <label for="username" class="form-label">
+                Username
+            </label>
+
+            <input type="text"
+                   id="username"
+                   name="username"
+                   class="form-control"
+                   placeholder="admin"
+                   required />
+        </div>
+
+        <div class="mb-3">
+            <label for="ipAddress" class="form-label">
+                IP address
+            </label>
+
+            <input type="text"
+                   id="ipAddress"
+                   name="ipAddress"
+                   class="form-control"
+                   placeholder="192.168.1.50"
+                   required />
+        </div>
+
+        <div class="form-check mb-3">
+            <input type="checkbox"
+                   id="loginSucceeded"
+                   name="loginSucceeded"
+                   value="true"
+                   class="form-check-input" />
+
+            <label for="loginSucceeded"
+                   class="form-check-label">
+                Login succeeded
+            </label>
+        </div>
+
+        <button type="submit"
+                class="btn btn-primary">
+            Record Login Attempt
+        </button>
+    </form>
+</div>
