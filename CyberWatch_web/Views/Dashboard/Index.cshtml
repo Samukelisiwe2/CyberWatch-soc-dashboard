@@ -1,4 +1,5 @@
 ﻿@model CyberWatch_web.Models.DashboardViewModel
+@using CyberWatch_web.Models
 
 @{
     ViewData["Title"] = "CyberWatch Dashboard";
@@ -13,7 +14,6 @@
     </div>
 
     <div class="row g-3 mb-4">
-
         <div class="col-md-3">
             <div class="card shadow-sm">
                 <div class="card-body">
@@ -49,7 +49,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="card shadow-sm">
@@ -58,7 +57,6 @@
         </div>
 
         <div class="card-body p-0">
-
             @if (Model.RecentAlerts.Count == 0)
             {
                 <div class="p-4 text-center text-muted">
@@ -89,15 +87,11 @@
                                     <td>@alert.IpAddress</td>
 
                                     <td>
-                                        @if (alert.Severity ==
-                                            CyberWatch_web.Models.AlertSeverity.High)
+                                        @if (alert.Severity == AlertSeverity.High)
                                         {
-                                            <span class="badge bg-danger">
-                                                High
-                                            </span>
+                                            <span class="badge bg-danger">High</span>
                                         }
-                                        else if (alert.Severity ==
-                                            CyberWatch_web.Models.AlertSeverity.Medium)
+                                        else if (alert.Severity == AlertSeverity.Medium)
                                         {
                                             <span class="badge bg-warning text-dark">
                                                 Medium
@@ -105,9 +99,7 @@
                                         }
                                         else
                                         {
-                                            <span class="badge bg-success">
-                                                Low
-                                            </span>
+                                            <span class="badge bg-success">Low</span>
                                         }
                                     </td>
 
@@ -128,7 +120,6 @@
                     </table>
                 </div>
             }
-
         </div>
     </div>
 </div>
